@@ -21,8 +21,31 @@ button {
     border: none;
     padding: 10px 20px;
     color: white;
+    margin-right: 8px;
+    border-radius: 4px;
     cursor: pointer;
 }
+
+.edit-layout-btn {
+  position: fixed;
+  padding: 10px 16px;
+  background-color: #007bff; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Hide on mobile devices */
+@media (max-width: 768px) {
+  .edit-layout-btn {
+    display: none;
+  }
+}
+
 
 .book-grid {
     display: grid;
