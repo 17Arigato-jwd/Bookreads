@@ -9,11 +9,47 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
+      <header>
         <h1>Your Bookreads Collection</h1>
-        <button id="editLayoutBtn" class="edit-layout-btn">Edit Layout</button>
-        <button id="addBookBtn">Add Book</button>
-    </header>
+        <div class="header-buttons">
+          <button class="colorful-button">
+              <div class="wrapper">
+                  <span>Edit Layout</span>
+                  <div class="circle circle-12"></div>
+                  <div class="circle circle-11"></div>
+                  <div class="circle circle-10"></div>
+                  <div class="circle circle-9"></div>
+                  <div class="circle circle-8"></div>
+                  <div class="circle circle-7"></div>
+                  <div class="circle circle-6"></div>
+                  <div class="circle circle-5"></div>
+                  <div class="circle circle-4"></div>
+                  <div class="circle circle-3"></div>
+                  <div class="circle circle-2"></div>
+                  <div class="circle circle-1"></div>
+              </div>
+          </button>
+          <button class="orange-button" id="addBookBtn">
+            <div class="wrapper">
+              <span>Add Book</span>
+              <!-- Reuse same 12 circle divs -->
+              <div class="circle circle-12"></div>
+              <div class="circle circle-11"></div>
+              <div class="circle circle-10"></div>
+              <div class="circle circle-9"></div>
+              <div class="circle circle-8"></div>
+              <div class="circle circle-7"></div>
+              <div class="circle circle-6"></div>
+              <div class="circle circle-5"></div>
+              <div class="circle circle-4"></div>
+              <div class="circle circle-3"></div>
+              <div class="circle circle-2"></div>
+              <div class="circle circle-1"></div>
+            </div>
+          </button>
+        </div>
+      </header>
+
 
     <!-- Grid Layout for Book Thumbnails -->
     <div class="book-grid" id="bookGrid">
@@ -25,33 +61,62 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Add/Edit Book</h2>
-            <form id="bookForm">
-                <label for="bookName">Name:</label>
-                <input type="text" id="bookName" name="bookName" required>
+            <form id="bookForm" class="styled-form">
+              <div class="form-group">
+                  <label for="bookName">Name:</label>
+                  <input type="text" id="bookName" name="bookName" required>
+              </div>
 
-                <label for="websiteName">Website Name:</label>
-                <input type="text" id="websiteName" name="websiteName" required>
+              <div class="form-group">
+                  <label for="websiteName">Website Name:</label>
+                  <input type="text" id="websiteName" name="websiteName" required>
+              </div>
 
-                <label for="bookURL">URL:</label>
-                <input type="text" id="bookURL" name="bookURL" required>
+              <div class="form-group">
+                  <label for="bookURL">URL:</label>
+                  <input type="text" id="bookURL" name="bookURL" required>
+              </div>
 
-                <label for="bookImageURL">Image URL:</label>
-                <input type="text" id="bookImageURL" name="bookImageURL" required oninput="previewImageURL(event)">
-                <img id="imagePreview" src="" alt="Image Preview" style="display:none; max-width: 100%;"/>
+              <div class="form-group">
+                  <label for="bookImageURL">Image URL:</label>
+                  <input type="text" id="bookImageURL" name="bookImageURL" required oninput="previewImageURL(event)">
+                  <img id="imagePreview" src="" alt="Image Preview" style="display:none; max-width: 100%; border-radius: 6px; margin-top: 8px;" />
+              </div>
 
+              <div class="form-group">
+                  <label for="bookListInput">Lists:</label>
+                  <div class="list-input-container">
+                      <input type="text" id="bookListInput" placeholder="Type to search or add..." autocomplete="off">
+                      <div id="listDropdown" class="dropdown hidden"></div>
+                      <button type="button" id="createListBtn" class="hidden">+ Create New</button>
+                  </div>
+                  <div id="selectedLists" class="selected-lists"></div>
+              </div>
 
-                <label for="bookList">List:</label>
-                <select id="bookList" name="bookList">
-                    <option value="favorites">Favorites</option>
-                    <option value="reading">Reading</option>
-                    <option value="completed">Completed</option>
-                </select>
+              <div class="form-group">
+                  <label for="chapter">Chapter (CH):</label>
+                  <input type="number" id="chapter" name="chapter" min="0" step="1" required>
+              </div>
 
-                <label for="chapter">Chapter (CH):</label>
-                <input type="number" id="chapter" name="chapter" min="0" step="1" required>
-
-                <button type="submit">Save</button>
-            </form>
+              <button type="submit" class="orange-button">
+                  <div class="wrapper">
+                      <span>Save</span>
+                      <!-- Circles from your existing animated button -->
+                      <div class="circle circle-12"></div>
+                      <div class="circle circle-11"></div>
+                      <div class="circle circle-10"></div>
+                      <div class="circle circle-9"></div>
+                      <div class="circle circle-8"></div>
+                      <div class="circle circle-7"></div>
+                      <div class="circle circle-6"></div>
+                      <div class="circle circle-5"></div>
+                      <div class="circle circle-4"></div>
+                      <div class="circle circle-3"></div>
+                      <div class="circle circle-2"></div>
+                      <div class="circle circle-1"></div>
+                  </div>
+              </button>
+          </form>
         </div>
     </div>
 
