@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Library</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+      <header>
+        <h1>Your Bookreads Collection</h1>
+        <div class="header-buttons">
+          <button class="colorful-button">
+              <div class="wrapper">
+                  <span>Edit Layout</span>
+                  <div class="circle circle-12"></div>
+                  <div class="circle circle-11"></div>
+                  <div class="circle circle-10"></div>
+                  <div class="circle circle-9"></div>
+                  <div class="circle circle-8"></div>
+                  <div class="circle circle-7"></div>
+                  <div class="circle circle-6"></div>
+                  <div class="circle circle-5"></div>
+                  <div class="circle circle-4"></div>
+                  <div class="circle circle-3"></div>
+                  <div class="circle circle-2"></div>
+                  <div class="circle circle-1"></div>
+              </div>
+          </button>
+          <button class="orange-button" id="addBookBtn">
+            <div class="wrapper">
+              <span>Add Book</span>
+              <!-- Reuse same 12 circle divs -->
+              <div class="circle circle-12"></div>
+              <div class="circle circle-11"></div>
+              <div class="circle circle-10"></div>
+              <div class="circle circle-9"></div>
+              <div class="circle circle-8"></div>
+              <div class="circle circle-7"></div>
+              <div class="circle circle-6"></div>
+              <div class="circle circle-5"></div>
+              <div class="circle circle-4"></div>
+              <div class="circle circle-3"></div>
+              <div class="circle circle-2"></div>
+              <div class="circle circle-1"></div>
+            </div>
+          </button>
+        </div>
+      </header>
+
+
+    <!-- Grid Layout for Book Thumbnails -->
+    <div class="book-grid" id="bookGrid">
+        <!-- Dynamic Content - Book Items will be inserted here via JavaScript -->
+    </div>
+
+    <!-- Popup Modal for Adding/Editing Book -->
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Add New Book</h2>
+            <form id="bookForm" class="styled-form">
+                <!-- Required Fields Section -->
+                <div class="form-section">
+                    <h3 class="section-title">Required Information</h3>
+                    
+                    <div class="form-group">
+                        <label for="bookName">Book Name: <span class="required">*</span></label>
+                        <input type="text" id="bookName" name="bookName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bookImageURL">Book Cover:</label>
+                        <div class="image-input-wrapper">
+                            <input type="text" id="bookImageURL" name="bookImageURL" placeholder="Paste image URL or drag & drop image here">
+                            <button type="button" id="uploadImageBtn" class="upload-btn" title="Upload Image">
+                                <i class="fa fa-upload"></i>
+                            </button>
+                            <input type="file" id="imageFileInput" accept="image/*" style="display: none;">
+                        </div>
+                        <div id="imageDropZone" class="drop-zone">
+                            <i class="fa fa-image"></i>
+                            <p>Drag & drop an image here</p>
+                        </div>
+                        <img id="imagePreview" src="" alt="Image Preview" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bookListInput">Lists: <span class="required">*</span></label>
+                        <div class="list-input-container">
+                            <input type="text" id="bookListInput" placeholder="Search lists..." autocomplete="off">
+                            <button type="button" id="toggleListDropdown" class="dropdown-toggle">
+                                <i class="fa fa-chevron-down"></i>
+                            </button>
+                            <div id="listDropdown" class="dropdown hidden"></div>
+                        </div>
+                        <div id="selectedLists" class="selected-lists"></div>
+                        <button type="button" id="createListBtn" class="create-list-btn hidden">
+                            <i class="fa fa-plus"></i> Create New List
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Optional Fields Section (Collapsible) -->
+                <div class="form-section optional-section">
+                    <button type="button" class="section-toggle" id="toggleOptional">
+                        <i class="fa fa-chevron-right"></i>
+                        <span>Optional Details</span>
+                    </button>
+                    <div class="collapsible-content" id="optionalFields">
+                        <div class="form-group">
+                            <label for="websiteName">Website Name:</label>
+                            <input type="text" id="websiteName" name="websiteName" placeholder="e.g., Royal Road, Webtoon, Webnovel">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bookURL">Book URL:</label>
+                            <input type="text" id="bookURL" name="bookURL" placeholder="https://...">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="chapter">Current Chapter:</label>
+                            <input type="number" id="chapter" name="chapter" min="0" step="1" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="orange-button">
+                    <div class="wrapper">
+                        <span>Save Book</span>
+                        <div class="circle circle-12"></div>
+                        <div class="circle circle-11"></div>
+                        <div class="circle circle-10"></div>
+                        <div class="circle circle-9"></div>
+                        <div class="circle circle-8"></div>
+                        <div class="circle circle-7"></div>
+                        <div class="circle circle-6"></div>
+                        <div class="circle circle-5"></div>
+                        <div class="circle circle-4"></div>
+                        <div class="circle circle-3"></div>
+                        <div class="circle circle-2"></div>
+                        <div class="circle circle-1"></div>
+                    </div>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="storageProgress">
+        <div id="storageBar"></div>
+        <span id="storageText"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
