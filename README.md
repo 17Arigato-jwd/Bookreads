@@ -1,4 +1,4 @@
-# 📚 Bookreads
+# Bookreads
 
 A lightweight, browser-based book tracking app built with vanilla HTML, CSS, and JavaScript. Bookreads lets you keep a personal reading list — log books you've read, are currently reading, or want to pick up next.
 
